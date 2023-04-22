@@ -2,7 +2,7 @@ import React from 'react'
 
 const TodoSearch = () => {
   return (
-    <div>TodoSearch</div>
+    <input placeholder="Input" />
   )
 }
 

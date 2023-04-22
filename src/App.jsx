@@ -20,6 +20,8 @@ function App() {
       <TodoCounter />    
       <TodoSearch />
       <TodoList>
+        <p>Esto es parte de el todo List</p>
+        <p>Prueba para pasarlo como children</p>
         {todos.map(todo =>(
           <TodoItem key={todo.text} text={todo.text} />
         ))}
