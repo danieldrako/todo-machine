@@ -23,7 +23,11 @@ function App() {
         <p>Esto es parte de el todo List</p>
         <p>Prueba para pasarlo como children</p>
         {todos.map(todo =>(
-          <TodoItem key={todo.text} text={todo.text} />
+          <TodoItem 
+            key={todo.text} 
+            text={todo.text} 
+            completed={todo.completed}
+          />
         ))}
       </TodoList>
       <CreateTodoButton />  
