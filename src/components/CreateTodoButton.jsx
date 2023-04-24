@@ -2,7 +2,11 @@ import React from 'react'
 
 const CreateTodoButton = () => {
   return (
-    <button>este es un boton</button>
+    <button
+      onClick={ ()=>console.log('hola') }
+    >
+      este es un boton
+    </button>
   )
 }
 
