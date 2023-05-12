@@ -9,4 +9,4 @@ const TodoCounter = ({total, completed}) => {
   )
 }
 
-export default TodoCounter
+export { TodoCounter}

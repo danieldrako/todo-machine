@@ -1,16 +1,20 @@
 import { useState } from 'react'
-import TodoCounter from './components/TodoCounter'
-import TodoSearch from './components/TodoSearch'
+import {TodoCounter} from './components/TodoCounter'
+import {TodoSearch} from './components/TodoSearch'
 import CreateTodoButton from './components/CreateTodoButton'
 import TodoList from './components/TodoList'
 import TodoItem from './components/TodoItem'
 
 //import './App.css'
+{/* //*===========================Todo List================================ */}
 const defaultTodos = [
   { text: 'Estudiar react', completed: false },
   { text: 'Estudiar vue', completed: false },
-  { text: 'Estudiar angular', completed: false }
+  { text: 'Estudiar angular', completed: false },
+  { text: 'Estudiar node', completed: false },
+  { text: 'Jugar la saga completa de Resident Evil', completed: false }
 ]
+{/* //*=========================================================== */}
 
 
 function App() {
@@ -21,8 +25,8 @@ function App() {
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   const totalTodos = todos.length;
 
+{/* //*<=======================SearchedTodos====================================> */}
   let searchedTodos = [];
-
   if(!searchValue.length>=1){
     searchedTodos = todos
   }else{
@@ -32,20 +36,25 @@ function App() {
       return todoText.includes(searchText);
     }) 
   }
+{/* //*</=========================SearchedTodos=============================/> */}
 
+{/* //*<=======================completeTodo====================================> */}
   const completeTodo = (text) => { 
       const todoIndex = todos.findIndex(todo => todo.text === text)
       const newTodos = [...todos]
       todos[todoIndex].completed = true
       setTodos(newTodos)
    }
+{/* //*</=======================completeTodo====================================/> */}
 
+{/* //*<=======================deleteTodo====================================> */}
    const deleteTodo = (text) => { 
     const todoIndex = todos.findIndex(todo => todo.text === text)
     const newTodos = [...todos]
     newTodos.splice(todoIndex,1)
     setTodos(newTodos)
  }
+ {/* //*</=======================deleteTodo====================================/> */}
 
   return (
     <>
@@ -58,6 +67,7 @@ function App() {
       setSearchValue={setSearchValue}
       />
       <TodoList>
+        {/* //!Children-> React transforma todo lo que está dentro de nuestro componente en la propiedad children*/}
         {searchedTodos.map(todos =>(
           <TodoItem 
             key={todos.text} 
@@ -65,7 +75,6 @@ function App() {
             completed={todos.completed}
             onComplete={() => completeTodo(todos.text)}
             onDelete={() => deleteTodo(todos.text)}
-            
           />
         ))}
       </TodoList>
