@@ -23,6 +23,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('')
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
+  //* La doble negación hace que sea un booleano
   const totalTodos = todos.length;
 
 {/* //*<=======================SearchedTodos====================================> */}

@@ -18,5 +18,7 @@
   }
   
   .TodoSearch:focus {
-    outline-color: #61DAFA;
+
+    outline:aquamarine;
+
   }
