@@ -1,15 +1,15 @@
 import React from 'react'
-import {RxCheck} from 'react-icons/rx'
 import { ImRadioChecked, ImRadioUnchecked } from 'react-icons/im'
 
 
-const CompleteIcon = (props) => {
-    const {className, onClick} = props
+const CompleteIcon = ({done,onClick}) => {
+    const iconSelected = done ? <ImRadioChecked/> : <ImRadioUnchecked/>
   return (
-    <RxCheck
-        className={className}
-        onClick={onClick}
-    />
+    <span
+        className={done ? 'span-icon-done' : 'span-icon-uncompleted'}
+        onClick={onClick}>
+            {iconSelected}
+    </span>
   )
 }
 

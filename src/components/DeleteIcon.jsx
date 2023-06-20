@@ -1,13 +1,14 @@
 import React from 'react'
-import {RxCross1} from 'react-icons/rx'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 
-const DeleteIcon = (props) => {
-    const {className, onClick} = props
+
+const DeleteIcon = ({onClick}) => {
   return (
-    <RxCross1
-        className={className}
-        onClick={onClick}
-    />
+    <span
+        className='span-icon-close'
+        onClick={onClick}>
+            <AiOutlineCloseCircle/>
+    </span>
   )
 }
 

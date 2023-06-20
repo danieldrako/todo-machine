@@ -49,3 +49,20 @@
   .Icon-delete:hover {
     color: red;
   }
+
+  .span-icon-close{
+    color: rgba(143, 10, 10, 0.821);
+    position: absolute;
+    font-size: 2rem;
+    right: 10px;
+    top: 15px;
+  }
+
+  .span-icon-done{
+    color: rgba(16, 164, 2, 0.75);
+  }
+
+  .span-icon-uncompleted{
+    color: rgba(164, 165, 165, 0.70);
+    font-size: 1.3rem;
+  }

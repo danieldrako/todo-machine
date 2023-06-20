@@ -12,16 +12,21 @@ const TodoItem = (props) => {
 
   return (
     <li className="TodoItem">
-      <CompleteIcon/>
+      <CompleteIcon
+        done={props.completed}
+        onClick={props.onComplete}
+      />
       {/* <span className={`Icon Icon-check ${props.completed && 'Icon-check--active'}`}
       onClick={props.onComplete}
       >
         √
       </span> */}
-      <p className={`TodoItem-p ${props.completed && 'TodoItem-p--complete'}`}>
+      <p className={`TodoItem-p ${props.completed ? 'TodoItem-p--complete' : '' }`}>
         {props.text}
       </p>
-      <DeleteIcon/>
+      <DeleteIcon
+        onClick={props.onDelete}
+      />
       {/* <span className="Icon Icon-delete"
         onClick={props.onDelete}
       >
