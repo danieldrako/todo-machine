@@ -7,7 +7,8 @@ const CreateTodoButton = () => {
       className='CreateTodoButton'
       onClick={ ()=>console.log('hola') }
     >
-      este es un boton
+      <span className='CreateTodoButton-in' >+</span>
+      
     </button>
   )
 }

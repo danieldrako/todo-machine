@@ -18,7 +18,9 @@
     font-weight: 400;
   }
   .TodoItem-p--complete {
-    text-decoration: line-through;
+    text-decoration:line-through;
+    text-decoration-thickness: 0.15rem;
+    text-decoration-color: #4caf50;
   }
   
   .Icon {
@@ -51,18 +53,32 @@
   }
 
   .span-icon-close{
-    color: rgba(143, 10, 10, 0.821);
+    color: rgba(117, 7, 7, 0.821);
     position: absolute;
     font-size: 2rem;
     right: 10px;
     top: 15px;
   }
-
+  .span-icon-close:hover{
+    color: rgba(220, 26, 26, 0.821);
+    position: absolute;
+    font-size: 2.3rem;
+    right: 7px;
+    top: 12px;
+    transition: 125ms;
+  }
   .span-icon-done{
     color: rgba(16, 164, 2, 0.75);
+    font-size: 1.3rem;
+    transition: 125ms;
   }
 
   .span-icon-uncompleted{
     color: rgba(164, 165, 165, 0.70);
     font-size: 1.3rem;
+  }
+  .span-icon-uncompleted:hover{
+    color: rgba(54, 56, 56, 0.791);
+    font-size: 1.5rem;
+    transition: 125ms;
   }
