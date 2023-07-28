@@ -7,19 +7,31 @@ import TodoItem from './components/TodoItem'
 
 //import './App.css'
 {/* //*===========================Todo List================================ */}
-const defaultTodos = [
-  { text: 'Estudiar react', completed: false },
-  { text: 'Estudiar vue', completed: false },
-  { text: 'Estudiar angular', completed: false },
-  { text: 'Estudiar node', completed: false },
-  { text: 'Jugar la saga completa de Resident Evil', completed: false }
-]
+// const defaultTodos = [
+//   { text: 'Estudiar react', completed: false },
+//   { text: 'Estudiar vue', completed: false },
+//   { text: 'Estudiar angular', completed: false },
+//   { text: 'Estudiar node', completed: false },
+//   { text: 'Jugar la saga completa de Resident Evil', completed: false }
+// ]
 {/* //*=========================================================== */}
 
+//localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+//localStorage.removeItem('TODOS_V1')
 
 function App() {
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
 
-  const [todos, setTodos] = useState(defaultTodos)
+  let parsedTodos;
+
+  if (!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = [];
+  }else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+  const [todos, setTodos] = useState(parsedTodos)
   const [searchValue, setSearchValue] = useState('')
 
   const completedTodos = todos.filter(todo => !!todo.completed).length;
@@ -39,12 +51,19 @@ function App() {
   }
 {/* //*</=========================SearchedTodos=============================/> */}
 
+  const saveTodos = (newTodos) => {
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+
+    setTodos(newTodos);
+  }
+
+
 {/* //*<=======================completeTodo====================================> */}
   const completeTodo = (text) => { 
       const todoIndex = todos.findIndex(todo => todo.text === text)
       const newTodos = [...todos]
       todos[todoIndex].completed = true
-      setTodos(newTodos)
+      saveTodos(newTodos)
    }
 {/* //*</=======================completeTodo====================================/> */}
 
@@ -53,7 +72,7 @@ function App() {
     const todoIndex = todos.findIndex(todo => todo.text === text)
     const newTodos = [...todos]
     newTodos.splice(todoIndex,1)
-    setTodos(newTodos)
+    saveTodos(newTodos)
  }
  {/* //*</=======================deleteTodo====================================/> */}
 
