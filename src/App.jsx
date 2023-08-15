@@ -1,10 +1,5 @@
 import { useState } from 'react'
-import {TodoCounter} from './components/TodoCounter'
-import {TodoSearch} from './components/TodoSearch'
-import CreateTodoButton from './components/CreateTodoButton'
-import TodoList from './components/TodoList'
-import TodoItem from './components/TodoItem'
-
+import { AppUI } from './AppUI';
 //import './App.css'
 {/* //*===========================Todo List================================ */}
 // const defaultTodos = [
@@ -44,7 +39,6 @@ function App() {
 
   const [todos, saveTodos] = useLocalStorage('TODOS_V1', [])
   const [searchValue, setSearchValue] = useState('')
-
   const completedTodos = todos.filter(todo => !!todo.completed).length;
   //* La doble negación hace que sea un booleano
   const totalTodos = todos.length;
@@ -61,8 +55,6 @@ function App() {
     }) 
   }
 {/* //*</=========================SearchedTodos=============================/> */}
-
-
 
 
 {/* //*<=======================completeTodo====================================> */}
@@ -82,32 +74,18 @@ function App() {
     saveTodos(newTodos)
  }
  {/* //*</=======================deleteTodo====================================/> */}
+ return (
+  <AppUI 
+    completedTodos = {completedTodos} 
+    totalTodos =    {totalTodos }
+    searchValue =  { searchValue }
+    setSearchValue = {setSearchValue }
+    searchedTodos = {searchedTodos} 
+    completeTodo =  {completeTodo} 
+    deleteTodo = {deleteTodo}
+  />
+ );
 
-  return (
-    <>
-      <TodoCounter 
-        total = {totalTodos}
-        completed = {completedTodos}
-      />    
-      <TodoSearch
-      searchValue={searchValue}
-      setSearchValue={setSearchValue}
-      />
-      <TodoList>
-        {/* //!Children-> React transforma todo lo que está dentro de nuestro componente en la propiedad children*/}
-        {searchedTodos.map(todos =>(
-          <TodoItem 
-            key={todos.text} 
-            text={todos.text} 
-            completed={todos.completed}
-            onComplete={() => completeTodo(todos.text)}
-            onDelete={() => deleteTodo(todos.text)}
-          />
-        ))}
-      </TodoList>
-      <CreateTodoButton />  
-    </>
-  ) 
 }
 
 export default App
